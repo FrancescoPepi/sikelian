@@ -1,6 +1,20 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/layout/navbar";
+import localfont from "next/font/local";
+import GridPattern from "@/components/magicui/grid-pattern";
+import { cn } from "@/lib/utils";
+
+const titania = localfont({
+  src: [
+    {
+      path: "../public/fonts/Titania-Regular.ttf",
+      weight: "700",
+    },
+  ],
+  variable: "--font-titania",
+});
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +30,45 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${titania.variable} text-primary-100`}>
+        <GridPattern
+          squares={[
+            [30, 40],
+            [30, 45],
+            [40, 35],
+            [40, 35],
+            [20, 34],
+            [24, 32],
+            [5, 1],
+            [80, 2],
+            [13, 30],
+            [23, 20],
+            [28, 20],
+            [20, 20],
+            [30, 22],
+            [32, 26],
+            [26, 16],
+            [26, 10],
+            [46, 10],
+            [48, 10],
+            [48, 12],
+            [43, 12],
+            [33, 4],
+            [23, 6],
+            [23, 5],
+            [23, 4],
+            [22, 4],
+            [24, 4],
+          ]}
+          className={cn(
+            "[mask-image:radial-gradient(1000px_circle_at_center,white,transparent)]",
+            "inset-x-0 inset-y-[-30%] h-[100%] translate-y-96 skew-y-12 fixed opacity-45"
+          )}
+        ></GridPattern>
+        <Navbar isLoggedIn={false} />
+
+        {children}
+      </body>
     </html>
   );
 }
