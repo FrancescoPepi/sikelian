@@ -2,7 +2,21 @@ import path from "path";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import ShimmerButton from "../magicui/shimmer-button";
+import localFont from "next/font/local";
 import { MarqueeDemo } from "../magicui/MarqueeDemo";
+
+const titania = localFont({
+  src: "../../public/fonts/Titania-Regular.ttf",
+});
+// const titania = localFont({
+//   src: [
+//     {
+//       path: "../../public/fonts/Titania-Regular.ttf",
+//       weight: "700",
+//     },
+//   ],
+//   variable: "--font-titania",
+// });
 
 interface NavbarProps {
   isLoggedIn?: Boolean;
@@ -15,8 +29,10 @@ const Navbar = ({ isLoggedIn }: NavbarProps) => {
       <MarqueeDemo></MarqueeDemo>
       <div className="flex-col container">
         <div className="p-2 text-center font-titania">
-          <h1 className="text-7xl">Sikelian</h1>
-          <h2 className="text-lg">TUTTO QUANTO FA SICILIA</h2>
+          <h1 className={`text-7xl ${titania.className}`}>Sikelian</h1>
+          <h2 className={`text-lg ${titania.className}`}>
+            TUTTO QUANTO FA SICILIA
+          </h2>
         </div>
         <div className="flex max-w-7xl mx-auto pb-4 items-center">
           <div className="flex-1 flex overflow-hidden h-[50px]">
